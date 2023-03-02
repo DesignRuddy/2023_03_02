@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<style> *{font-size: 20pt;} </style>
+
+<script type="text/javascript">
+    var imgsource = [ 'img/1.gif',  'img/2.gif', 'img/3.gif',  'img/4.gif', 
+                     'img/5.gif',  'img/6.gif', 'img/7.gif',  'img/8.gif', 
+                     'img/9.gif',  'img/10.gif', 'img/11.gif', 'img/12.gif', 
+                     'img/13.gif', 'img/14.gif', 'img/15.gif', 'img/16.gif'
+                    ];
+    var x,y,i,j,s1,s2,s3,s4,temp ;
+    var c1,c2,c3,c4 ;
+
+    function puzzle(x,y){
+        if(x>0 && puz[x-1][y]=='16.gif'){change(x,y,x-1,y);}
+        if(x>3 && puz[x+1][y]=='16.gif'){change(x,y,x-1,y);}
+        if(y>0 && puz[x][y-1]=='16.gif'){change(x,y,x-1,y);}
+        if(y>3 && puz[x][y+1]=='16.gif'){change(x,y,x-1,y);}
+    }
+        
+    function change(c1,c2,c3,c4){
+        tmep = puz[c1][c2];
+        puz[c1][c2]= puz[c3][c4]
+        puz[c3][c4]= temp ;
+        in_puzzle() ;
+    }
+    function sort(){
+        for(i=0,i<20;,i++){
+            s1 = Math.floor(Math.random()*4);
+            s2 = Math.floor(Math.random()*4);
+            s3 = Math.floor(Math.random()*4);
+            s4 = Math.floor(Math.random()*4);
+            temp = puz[s1][s2];
+            puz[s1][s2] = puz[s3][s4]
+            puz[s3][s4] = temp ; 
+        }
+        in_puzzle() ;
+    }
+    function in_puzzle(){
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+        document.getElementById('p00').src =puz[0][0];
+    }
+    for (var i=0 ; i<16 ; i++){
+        //if(i%4==0){document.write('<br>'); }
+	    document.write("<img src=" + imgsource[i] + " border=1>") ; 
+	}
+   //390페이지 
+</script>
+</head>
+<body>
+    
+    <h2> 04testarray.html </h2>
+<div><table>
+    <tr>
+        <td><script language="JavaScript">
+    
+    with(window.document)
+    
+      {
+        open();
+    
+        writeln('<table cellpadding=2 cellspacing=0>');
+    
+        for(var i=0;i<4;i++){
+    
+            for(var j=0;j<4;j++)
+    
+           {
+    
+             if(j===0)
+    
+               {
+    
+                 writeln('<tr>');
+    
+               }
+    
+             writeln('<td width=70 height=52 onclick="puzzle(',i,', ',j,')">');
+    
+             writeln('<img src=',i,'',j,'.jpg border=0 width=70 height=52 id=p',i,'',j,'></a>');
+    
+             writeln('</td>');
+    
+            }
+    
+        }
+    
+          writeln('</table>');
+    
+          close();
+    
+        }
+    
+                </script>
+    
+        </td>
+    </tr>
+</table></div>
+    
+    <input type="button" value="Start" onclick="sort()" />
+    
+    <input type="button" value="Solve" onclick="solve()" />
+
+</body>
+</html>
